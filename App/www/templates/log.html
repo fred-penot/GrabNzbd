@@ -1,0 +1,14 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-dark">
+    <h1 class="title">Log - {{ title }}</h1>
+    <button class="button button-icon icon ion-ios-undo-outline" ng-click="closeLog()"></button>
+  </ion-header-bar>
+  <ion-content>
+    <div class="padding" ng-show="noLog">
+      {{ noLogMsg }}
+    </div>
+    <div class="padding" ng-repeat="log in logs">
+      {{ log }}
+    </div>
+  </ion-content>
+</ion-modal-view>

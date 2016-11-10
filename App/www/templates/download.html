@@ -1,0 +1,72 @@
+<ion-view view-title="Téléchargement" ng-controller="DownloadCtrl">
+  <ion-content>
+    <ion-list>
+      <div class="row">
+        <div class="col col-40"></div>
+        <div class="col col-20" ng-repeat="actionButton in actionButtons">
+          <button class="button button-icon" style="text-align: center; color: white; font-weight: bold;
+                            width: 100%; height: 100%; border-color: black; background-color: #5bc0de"
+                  ng-click="launchAction($index)">
+            <i class="icon {{actionButton.icon}}" ng-if="!actionButton.loading"></i>
+            <i class="icon fa fa-spinner fa-pulse" ng-if="actionButton.loading"></i>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-80">
+          <div class="item range">
+            <i class="icon ion-ios-speedometer-outline"></i>
+            <input type="range" ng-model="server.speed" name="speedLimit" min="0" max="60">
+            <i class="icon ion-ios-speedometer"></i>
+          </div>
+        </div>
+        <div class="col col-10">
+          <button class="button button-icon icon ion-android-checkmark-circle" ng-click="validSpeed(server.speed)"></button>
+        </div>
+      </div>
+      <div class="row" style="margin-left: 2px !important;">
+        <div class="col-50">Débit actuel: {{ speed }}</div>
+        <div class="col-50">
+          Débit limite:
+          <span ng-if="server.speed > 0">{{ server.speed }} Mo/s</span>
+          <i class="icon ion-ios-infinite" ng-if="server.speed == 0"></i>
+        </div>
+      </div>
+      <div class="padding">
+        {{ noDownload }}
+      </div>
+    </ion-list>
+    <ion-list>
+      <ion-item ng-repeat="download in downloads">
+        <div class="row" style="padding-top: 0px !important; padding-bottom: 0px !important;">
+          <div class="col" style="padding-top: 0px !important; padding-bottom: 0px !important;">
+            <div class="row" style="padding-top: 0px !important; margin-left: 0px !important;">
+              <h3>{{ download.title }}</h3>
+            </div>
+            <div class="row" style="padding-top: 10px !important; padding-bottom: 0px !important; margin-left: 0px !important;">
+              <h4>{{ download.category }}</h4>
+            </div>
+          </div>
+          <div class="col col-10" style="padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;">
+            <button class="button button-icon icon ion-more" ng-click="openMore(download)"></button>
+          </div>
+        </div>
+        <div class="row" ng-if="$first" style="padding-top: 0px !important; padding-bottom: 0px !important;">
+          <div class="col" style="padding-top: 0px !important; padding-bottom: 0px !important;">
+            <progress id="progressbar" max="100"
+                      value="{{ progressDownload($index, download.sizeMo, download.sizeLeftMo) }}">
+            </progress>
+          </div>
+          <div class="col col-10" id="progressbarlabel" style="padding-top: 15px !important; padding-bottom: 0px !important;">
+            {{ pourcentDownload }} %
+          </div>
+        </div>
+        <div class="row" style="padding-top: 0px !important; padding-bottom: 0px !important;">
+          <div class="col" style="padding-top: 0px !important; padding-bottom: 0px !important;">
+            <h4>{{ download.sizeLeftMo }} / {{ download.sizeMo }} Mo restant ({{ download.timeleft }})</h4>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

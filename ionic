@@ -1,0 +1,16 @@
+current_path=`pwd`
+param1=$1
+param2=$2
+
+isInPathCordova=`echo $PATH | grep /node_modules/cordova/bin | wc -l`
+if [ $isInPathCordova -eq 0 ] ; then
+	export PATH=${current_path}/node_modules/cordova/bin:$PATH
+fi
+
+isInPathIonic=`echo $PATH | grep /node_modules/ionic/bin | wc -l`
+if [ $isInPathIonic -eq 0 ] ; then
+	export PATH=${current_path}/node_modules/ionic/bin:$PATH
+fi
+
+cd ${current_path}/App
+ionic ${param1} ${param2}

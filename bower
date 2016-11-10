@@ -1,0 +1,11 @@
+current_path=`pwd`
+param1=$1
+param2=$2
+
+isInPathBower=`echo $PATH | grep /node_modules/bower/bin | wc -l`
+if [ $isInPathBower -eq 0 ] ; then
+	export PATH=${current_path}/node_modules/bower/bin:$PATH
+fi
+
+cd ${current_path}/App
+bower ${param1} ${param2} --save

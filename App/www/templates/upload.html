@@ -1,0 +1,24 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-dark">
+    <h1 class="title">Upload</h1>
+    <button class="button button-icon icon ion-ios-undo-outline" ng-click="closeUpload()"></button>
+  </ion-header-bar>
+  <ion-content>
+    <div class="row">
+      <div class="col">
+        <div class="fileUpload btn btn-primary">
+          <span>Upload</span>
+          <input onchange="angular.element(this).scope().setFiles(this.value)" type="file" class="upload"  multiple=""/>
+        </div>
+      </div>
+      <div class="col col-20">
+        <button class="button button-icon" style="text-align: center; color: white; font-weight: bold;
+                            width: 100%; height: 100%; border-color: black; background-color: #5bc0de"
+                ng-click="refreshUploadWindow()">
+          <i class="icon ion-ios-refresh-outline"></i>
+        </button>
+      </div>
+    </div>
+    <div class="padding">{{ chooseFile }}</div>
+  </ion-content>
+</ion-modal-view>

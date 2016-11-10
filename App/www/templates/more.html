@@ -1,0 +1,79 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-dark">
+    <h1 class="title">Options / {{ itemSelect.title }}</h1>
+    <button class="button button-icon icon ion-ios-undo-outline" ng-click="closeMore()"></button>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list>
+      <ion-item style="padding: 0px 0px 0px 0px !important;">
+        <div class="row button" ng-click="showRenameOption()">
+          <div class="col col-10">
+            <i class="icon ion-compose"></i>
+          </div>
+          <div class="col">
+            Renommer
+          </div>
+        </div>
+      </ion-item>
+      <ion-item style="padding: 0px 0px 0px 0px !important;">
+        <div class="row button" ng-click="showCategoryOption()">
+          <div class="col col-10">
+            <i class="icon ion-arrow-swap"></i>
+          </div>
+          <div class="col">
+            Catégorie
+          </div>
+        </div>
+      </ion-item>
+      <ion-item style="padding: 0px 0px 0px 0px !important;">
+        <div class="row button" ng-click="showDeleteOption()">
+          <div class="col col-10">
+            <i class="icon ion-trash-a"></i>
+          </div>
+          <div class="col">
+            Supprimer
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+    <div ng-show="renameOption" style="padding-top: 30px !important;">
+      <form ng-submit="doRename()">
+        <div class="list">
+          <label class="item item-input">
+            <span class="input-label">Titre</span>
+            <input type="text" ng-model="option.title">
+          </label>
+          <label class="item">
+            <button class="button button-block button-dark" type="submit">Renommer</button>
+          </label>
+        </div>
+      </form>
+    </div>
+    <div ng-show="categoryOption" style="padding-top: 30px !important;">
+      <form ng-submit="doChangeCategory()">
+        <div class="list">
+          <label class="item item-input item-select">
+            <span class="input-label">Catégorie</span>
+            <select ng-model="option.category">
+              <option ng-repeat="downloadCategory in downloadCategories" value="{{downloadCategory}}">
+                {{downloadCategory}}
+              </option>
+            </select>
+          </label>
+          <label class="item">
+            <button class="button button-block button-dark" type="submit">Changer</button>
+          </label>
+        </div>
+      </form>
+    </div>
+    <div ng-show="deleteOption" style="padding-top: 30px !important;">
+      <label class="item">
+        Confirmer la suppression
+      </label>
+      <label class="item">
+        <button class="button button-block button-dark" ng-click="deleteDownload()">Supprimer</button>
+      </label>
+    </div>
+    <div class="padding">{{ message }}</div>
+  </ion-content>
+</ion-modal-view>
