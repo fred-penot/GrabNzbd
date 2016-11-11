@@ -23,7 +23,7 @@ cd /path/to/GrabNzbd
 # Test android
 cd /path/to/GrabNzbd
 
-./ionic emulate android
+./ionic emulate android -lc
 
 # Generate android key
 cd /path/to/GrabNzbd
