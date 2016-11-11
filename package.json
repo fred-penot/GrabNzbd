@@ -1,10 +1,10 @@
 {
-  "name": "ionic-project-base",
-  "description": "IonicProjectBase: An Ionic project",
+  "name": "ionic-grabnzbd-project",
+  "description": "Usenet download with SabNzbd API and more",
   "dependencies": {
-    "bower": "^1.7.9",
-    "cordova": "^6.3.1",
-    "ionic": "^2.0.0"
+    "bower": "1.7.9",
+    "cordova": "6.3.1",
+    "ionic": "2.1.1"
   },
   "devDependencies": {},
   "cordovaPlugins": [],
