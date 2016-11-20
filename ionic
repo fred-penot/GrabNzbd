@@ -1,3 +1,5 @@
+cd /home/GrabNzbd
+
 current_path=`pwd`
 param1=$1
 param2=$2
