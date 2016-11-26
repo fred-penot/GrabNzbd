@@ -1,4 +1,4 @@
-cd /home/GrabNzbd
+cd /home/docker/GrabNzbd
 
 current_path=`pwd`
 param1=$1
